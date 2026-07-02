@@ -19,7 +19,3 @@ allure-report/
 
 # Logs
 *.log
-
-# Internal
-CLAUDE.md
-todo/
