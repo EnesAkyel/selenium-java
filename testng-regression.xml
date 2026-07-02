@@ -1,0 +1,21 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="selenium-java Regression" verbose="1" parallel="tests" thread-count="3">
+    <listeners>
+        <listener class-name="SeleniumWebAutomation.common.RetryListener"/>
+    </listeners>
+    <test name="Login Tests">
+        <classes>
+            <class name="SeleniumWebAutomation.tests.LoginTest"/>
+        </classes>
+    </test>
+    <test name="PIM Tests">
+        <classes>
+            <class name="SeleniumWebAutomation.tests.PimTest"/>
+        </classes>
+    </test>
+    <test name="Leave Tests">
+        <classes>
+            <class name="SeleniumWebAutomation.tests.LeaveTest"/>
+        </classes>
+    </test>
+</suite>

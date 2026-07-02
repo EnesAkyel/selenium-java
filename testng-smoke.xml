@@ -1,0 +1,25 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="selenium-java Smoke" verbose="1">
+    <listeners>
+        <listener class-name="SeleniumWebAutomation.common.RetryListener"/>
+    </listeners>
+    <test name="Smoke Tests">
+        <classes>
+            <class name="SeleniumWebAutomation.tests.LoginTest">
+                <methods>
+                    <include name="validCredentialsReachDashboard"/>
+                </methods>
+            </class>
+            <class name="SeleniumWebAutomation.tests.PimTest">
+                <methods>
+                    <include name="employeeListLoadsWithRecords"/>
+                </methods>
+            </class>
+            <class name="SeleniumWebAutomation.tests.LeaveTest">
+                <methods>
+                    <include name="leaveModuleLoads"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

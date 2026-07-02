@@ -1,0 +1,25 @@
+# Maven
+target/
+
+# IDEs
+.idea/
+*.iws
+*.iml
+*.ipr
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Allure
+allure-results/
+allure-report/
+.allure/
+
+# Logs
+*.log
+
+# Internal
+CLAUDE.md
+todo/
