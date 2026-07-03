@@ -2,7 +2,7 @@ name: UI Tests
 
 on:
   push:
-    branches: ["**"]
+    branches: [main]
   pull_request:
     branches: [main]
 
@@ -30,7 +30,7 @@ jobs:
         if: always()
         with:
           name: 'Smoke Test Results'
-          path: target/surefire-reports/*.xml
+          path: target/surefire-reports/TEST-*.xml
           reporter: java-junit
           fail-on-error: false
 
