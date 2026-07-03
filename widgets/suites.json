@@ -1,1 +1,1 @@
-{"total":1,"items":[{"uid":"9964dccd21de9b0b0fb64ee7a31ae006","name":"selenium-java Regression","statistic":{"failed":0,"broken":3,"skipped":0,"passed":6,"unknown":0,"total":9}}]}
+{"total":1,"items":[{"uid":"9964dccd21de9b0b0fb64ee7a31ae006","name":"selenium-java Regression","statistic":{"failed":0,"broken":0,"skipped":0,"passed":6,"unknown":0,"total":6}}]}
