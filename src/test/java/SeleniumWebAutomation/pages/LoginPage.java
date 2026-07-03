@@ -60,7 +60,7 @@ public class LoginPage extends BasePage {
     }
 
     public List<WebElement> getFieldErrors() {
-        waitForVisible(fieldErrors.get(0));
+        waitForVisible(fieldErrors.getFirst());
         return fieldErrors;
     }
 }
