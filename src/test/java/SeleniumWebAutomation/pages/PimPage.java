@@ -1,22 +1,18 @@
 package SeleniumWebAutomation.pages;
 
 import SeleniumWebAutomation.common.BasePage;
-import SeleniumWebAutomation.components.TableComponent;
 import SeleniumWebAutomation.config.ConfigReader;
 import SeleniumWebAutomation.driver.DriverManager;
 import io.qameta.allure.Step;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class PimPage extends BasePage {
-    private static final By TABLE_ROW = By.cssSelector(".oxd-table-body .oxd-table-row");
-
     @FindBy(css = ".oxd-table-body .oxd-table-row")
     private WebElement firstTableRow;
 
-    @FindBy(xpath = "//*[contains(text(),'Records Found')]")
-    private WebElement recordsFound;
+    @FindBy(xpath = "//span[contains(., 'Record') and contains(., 'Found')]")
+    private WebElement recordFound;
 
     @FindBy(css = "button[type='submit']")
     private WebElement submitButton;
@@ -30,23 +26,7 @@ public class PimPage extends BasePage {
     @FindBy(css = "input[placeholder='Last Name']")
     private WebElement lastNameInput;
 
-    @FindBy(css = "button:has(i.bi-pencil-fill)")
-    private WebElement editButton;
-
-    @FindBy(css = "button:has(i.bi-trash)")
-    private WebElement deleteButton;
-
-    @FindBy(xpath = "//button[normalize-space()='Yes, Delete']")
-    private WebElement deleteConfirmButton;
-
-    @FindBy(css = ".oxd-toast--success")
-    private WebElement successToast;
-
     public PimPage() { super(DriverManager.getDriver()); }
-
-    public TableComponent getEmployeeTable() {
-        return new TableComponent(driver, TABLE_ROW);
-    }
 
     @Step("Wait for employee table to load")
     public PimPage waitForTableToLoad() {
@@ -55,7 +35,8 @@ public class PimPage extends BasePage {
     }
 
     public int getRecordCount() {
-        return Integer.parseInt(waitForVisible(recordsFound).getText().replaceAll("[^0-9]", ""));
+        scrollToElement(recordFound);
+        return Integer.parseInt(waitForVisible(recordFound).getText().replaceAll("[^0-9]", ""));
     }
 
     @Step("Search by employee ID: {employeeId}")
@@ -63,13 +44,7 @@ public class PimPage extends BasePage {
         waitForVisible(employeeIdInput).clear();
         employeeIdInput.sendKeys(employeeId);
         waitForClickable(submitButton).click();
-        waitForVisible(recordsFound);
-    }
-
-    @Step("Navigate to employee list")
-    public PimPage navigateToList() {
-        driver.get(ConfigReader.getBaseUrl() + "/web/index.php/pim/viewEmployeeList");
-        return this;
+        waitForVisible(recordFound);
     }
 
     @Step("Open Add Employee form")
@@ -91,34 +66,6 @@ public class PimPage extends BasePage {
 
     @Step("Save employee")
     public void saveEmployee() {
-        waitForClickable(submitButton).click();
-    }
-
-    @Step("Click edit for employee with ID: {employeeId}")
-    public PimPage clickEditForEmployee(String employeeId) {
-        searchByEmployeeId(employeeId);
-        waitForClickable(editButton).click();
-        return this;
-    }
-
-    @Step("Update first name to: {firstName}")
-    public PimPage updateFirstName(String firstName) {
-        waitForVisible(firstNameInput).clear();
-        firstNameInput.sendKeys(firstName);
-        return this;
-    }
-
-    @Step("Save personal details")
-    public void savePersonalDetails() {
-        waitForClickable(submitButton).click();
-        waitForVisible(successToast);
-    }
-
-    @Step("Delete employee with ID: {employeeId}")
-    public PimPage deleteEmployeeById(String employeeId) {
-        searchByEmployeeId(employeeId);
-        waitForClickable(deleteButton).click();
-        waitForClickable(deleteConfirmButton).click();
-        return this;
+        submitButton.click();
     }
 }
