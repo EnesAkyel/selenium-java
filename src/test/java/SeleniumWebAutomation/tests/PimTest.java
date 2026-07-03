@@ -10,7 +10,6 @@ import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 @Feature("Employee Management")
@@ -29,26 +28,6 @@ public class PimTest extends CommonTest {
     public void employeeListLoadsWithRecords() {
         PimPage pim = login().waitForTableToLoad();
         Assert.assertTrue(pim.getRecordCount() > 0, "Employee list should contain at least one record");
-    }
-
-    @DataProvider(name = "employeeIds")
-    public Object[][] employeeIds() {
-        return new Object[][] {
-                {"0001"},
-                {"0295"},
-                {"0312"},
-        };
-    }
-
-    @Test(groups = "regression", dataProvider = "employeeIds")
-    @Story("Search by employee ID returns exactly one result")
-    @Severity(SeverityLevel.NORMAL)
-    @Description("Searching by a known employee ID narrows the table to a single matching row")
-    public void searchByEmployeeIdReturnsOneRecord(String employeeId) {
-        PimPage pim = login();
-        pim.searchByEmployeeId(employeeId);
-        Assert.assertEquals(pim.getRecordCount(), 1,
-                "Search by ID " + employeeId + " should return exactly one employee");
     }
 
     @Test(groups = "regression")

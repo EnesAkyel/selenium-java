@@ -39,14 +39,6 @@ public class PimPage extends BasePage {
         return Integer.parseInt(waitForVisible(recordFound).getText().replaceAll("[^0-9]", ""));
     }
 
-    @Step("Search by employee ID: {employeeId}")
-    public void searchByEmployeeId(String employeeId) {
-        waitForVisible(employeeIdInput).clear();
-        employeeIdInput.sendKeys(employeeId);
-        waitForClickable(submitButton).click();
-        waitForVisible(recordFound);
-    }
-
     @Step("Open Add Employee form")
     public PimPage clickAddEmployee() {
         driver.get(ConfigReader.getBaseUrl() + "/web/index.php/pim/addEmployee");
