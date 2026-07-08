@@ -62,7 +62,7 @@ jobs:
         run: mvn test -Dtestng.suite=testng-regression.xml
 
       - name: Publish test results
-        uses: dorny/test-reporter@v1
+        uses: dorny/test-reporter@v3
         if: always()
         with:
           name: 'Regression Test Results'
