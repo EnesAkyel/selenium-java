@@ -26,7 +26,7 @@ jobs:
         run: mvn test -Dtestng.suite=testng-smoke.xml
 
       - name: Publish test results
-        uses: dorny/test-reporter@v1
+        uses: dorny/test-reporter@v3
         if: always()
         with:
           name: 'Smoke Test Results'
