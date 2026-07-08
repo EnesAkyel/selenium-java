@@ -11,14 +11,14 @@ UI test automation for [OrangeHRM](https://opensource-demo.orangehrmlive.com) �
 
 ## Tech Stack
 
-| Tool | Version | Purpose |
-|---|---|---|
-| Java | 21 | Language |
-| Selenium WebDriver | 4.45.0 | Browser automation |
-| TestNG | 7.12.0 | Test runner, parallel execution, DataProvider |
-| WebDriverManager | 6.3.4 | Automatic driver binary management |
-| Allure | 2.21.0 | Reporting — steps, screenshots on failure, environment info |
-| Maven | 3.x | Build and dependency management |
+| Tool               | Version | Purpose                                                     |
+|--------------------|---------|-------------------------------------------------------------|
+| Java               | 21      | Language                                                    |
+| Selenium WebDriver | 4.45.0  | Browser automation                                          |
+| TestNG             | 7.12.0  | Test runner, parallel execution, DataProvider               |
+| WebDriverManager   | 6.3.4   | Automatic driver binary management                          |
+| Allure             | 2.21.0  | Reporting — steps, screenshots on failure, environment info |
+| Maven              | 3.x     | Build and dependency management                             |
 
 ---
 
@@ -72,7 +72,8 @@ Page methods return the next page object so tests read as a linear chain:
 new LoginPage()
     .loginWith(ConfigReader.getUsername(), ConfigReader.getPassword())
     .navigateToPim()
-    .searchByEmployeeId("0001");
+    .clickAddEmployee()
+    .fillEmployeeForm("John", "Doe", "0001");
 ```
 
 ### TableComponent
@@ -81,16 +82,16 @@ new LoginPage()
 
 ### Screenshot on failure
 
-`CommonTest.tearDown` checks `ITestResult.getStatus()`. On failure it captures a PNG screenshot via `TakesScreenshot` and attaches it to the Allure report with `@Attachment`. The driver is always quit and the `ThreadLocal` is always cleared, regardless of outcome.
+`CommonTest.tearDown` checks `ITestResult.getStatus()`. On failure, it captures a PNG screenshot via `TakesScreenshot` and attaches it to the Allure report with `@Attachment`. The driver is always quit and the `ThreadLocal` is always cleared, regardless of outcome.
 
 ---
 
 ## Test Suites
 
-| Suite | File | Groups | Parallel |
-|---|---|---|---|
-| Smoke | `testng-smoke.xml` | `smoke` only | Sequential |
-| Regression | `testng-regression.xml` | All tests | `tests` level, 3 threads |
+| Suite      | File                    | Groups       | Parallel                 |
+|------------|-------------------------|--------------|--------------------------|
+| Smoke      | `testng-smoke.xml`      | `smoke` only | Sequential               |
+| Regression | `testng-regression.xml` | All tests    | `tests` level, 3 threads |
 
 ---
 
