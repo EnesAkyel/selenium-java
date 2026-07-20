@@ -19,7 +19,7 @@ import java.nio.file.Paths;
 import java.time.Duration;
 import java.util.Properties;
 
-public class CommonTest {
+public abstract class CommonTest {
 
     @BeforeSuite(alwaysRun = true)
     public void writeEnvironmentProperties() throws IOException {
