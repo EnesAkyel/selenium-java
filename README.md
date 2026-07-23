@@ -13,11 +13,11 @@ UI test automation for [OrangeHRM](https://opensource-demo.orangehrmlive.com) �
 
 | Tool               | Version | Purpose                                                     |
 |--------------------|---------|-------------------------------------------------------------|
-| Java               | 21      | Language                                                    |
-| Selenium WebDriver | 4.45.0  | Browser automation                                          |
+| Java               | 25      | Language                                                    |
+| Selenium WebDriver | 4.46.0  | Browser automation                                          |
 | TestNG             | 7.12.0  | Test runner, parallel execution, DataProvider               |
 | WebDriverManager   | 6.3.4   | Automatic driver binary management                          |
-| Allure             | 2.21.0  | Reporting — steps, screenshots on failure, environment info |
+| Allure             | 2.35.3  | Reporting — steps, screenshots on failure, environment info |
 | Maven              | 3.x     | Build and dependency management                             |
 
 ---
@@ -99,7 +99,7 @@ new LoginPage()
 
 ### Prerequisites
 
-- Java 21+
+- Java 25+
 - Maven 3.x
 - Google Chrome or Firefox installed
 
