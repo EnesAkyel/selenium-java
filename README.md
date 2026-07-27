@@ -18,7 +18,7 @@ UI test automation for [OrangeHRM](https://opensource-demo.orangehrmlive.com) â€
 | TestNG             | 7.12.0  | Test runner, parallel execution, DataProvider               |
 | WebDriverManager   | 6.3.4   | Automatic driver binary management                          |
 | Allure             | 2.35.3  | Reporting â€” steps, screenshots on failure, environment info |
-| Maven              | 3.x     | Build and dependency management                             |
+| Maven              | 3.9.16  | Build and dependency management                             |
 
 ---
 
@@ -100,7 +100,7 @@ new LoginPage()
 ### Prerequisites
 
 - Java 25+
-- Maven 3.x
+- Maven 3.9.16
 - Google Chrome or Firefox installed
 
 ### Smoke (default)
