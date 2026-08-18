@@ -1,9 +1,9 @@
 # selenium-java
 
-![Java](https://img.shields.io/badge/Java-21-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
-![Selenium](https://img.shields.io/badge/Selenium-4.45-43B02A?style=for-the-badge&logo=selenium&logoColor=white)
+![Java](https://img.shields.io/badge/Java-25-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
+![Selenium](https://img.shields.io/badge/Selenium-4.47-43B02A?style=for-the-badge&logo=selenium&logoColor=white)
 ![TestNG](https://img.shields.io/badge/TestNG-7.12-orange?style=for-the-badge)
-![Allure](https://img.shields.io/badge/Allure-2.21-orange?style=for-the-badge)
+![Allure](https://img.shields.io/badge/Allure-2.35-orange?style=for-the-badge)
 
 UI test automation for [OrangeHRM](https://opensource-demo.orangehrmlive.com) — an open-source enterprise HR application. Covers authentication, employee management, and leave management across smoke and regression suites with parallel execution.
 
@@ -14,10 +14,10 @@ UI test automation for [OrangeHRM](https://opensource-demo.orangehrmlive.com) �
 | Tool               | Version | Purpose                                                     |
 |--------------------|---------|-------------------------------------------------------------|
 | Java               | 25      | Language                                                    |
-| Selenium WebDriver | 4.46.0  | Browser automation                                          |
+| Selenium WebDriver | 4.47.0  | Browser automation                                          |
 | TestNG             | 7.12.0  | Test runner, parallel execution, DataProvider               |
 | WebDriverManager   | 6.3.4   | Automatic driver binary management                          |
-| Allure             | 2.35.3  | Reporting — steps, screenshots on failure, environment info |
+| Allure             | 2.35.4  | Reporting — steps, screenshots on failure, environment info |
 | Maven              | 3.9.16  | Build and dependency management                             |
 
 ---
@@ -28,9 +28,9 @@ UI test automation for [OrangeHRM](https://opensource-demo.orangehrmlive.com) �
 src/test/java/SeleniumWebAutomation/
 ├── common/
 │   ├── CommonTest.java        # @BeforeMethod/@AfterMethod; screenshot attached to Allure on failure
-│   └── BasePage.java          # Driver reference, PageFactory init, explicit wait helpers
-├── components/
-│   └── TableComponent.java    # Reusable OrangeHRM table abstraction — row count, find by text, row actions
+│   ├── BasePage.java          # Driver reference, PageFactory init, explicit wait helpers
+│   ├── RetryAnalyzer.java     # Retries a failed test up to 2 times
+│   └── RetryListener.java     # Wires RetryAnalyzer onto every @Test via IAnnotationTransformer
 ├── config/
 │   ├── ConfigReader.java      # Reads config.properties
 │   └── BrowserFactory.java    # Creates Chrome or Firefox driver; auto-headless when CI=true
@@ -39,12 +39,12 @@ src/test/java/SeleniumWebAutomation/
 ├── pages/
 │   ├── LoginPage.java         # Login form, error alert, field validation errors
 │   ├── DashboardPage.java     # Post-login landing page, module navigation
-│   ├── PimPage.java           # Employee list, search by ID, add employee, delete employee
-│   └── LeavePage.java         # Leave list, leave types table
+│   ├── PimPage.java           # Employee list, add employee form
+│   └── LeavePage.java         # Leave module load check
 ├── tests/
 │   ├── LoginTest.java         # Valid login, invalid credentials, empty field validation
-│   ├── PimTest.java           # Employee list smoke, search by ID (DataProvider), add/delete lifecycle
-│   └── LeaveTest.java         # Leave module smoke, leave types populated
+│   ├── PimTest.java           # Employee list smoke, add employee
+│   └── LeaveTest.java         # Leave module loads
 └── utils/
     └── Constants.java         # Shared assertion strings
 src/test/resources/
@@ -76,9 +76,9 @@ new LoginPage()
     .fillEmployeeForm("John", "Doe", "0001");
 ```
 
-### TableComponent
+### Retry on failure
 
-`TableComponent` wraps OrangeHRM's `.oxd-table` structure and provides `getRowCount()`, `findRowContaining(text)`, and `clickActionInRow(text, iconClass)`. Pages compose it rather than duplicating table traversal logic.
+`RetryListener` (an `IAnnotationTransformer`) attaches `RetryAnalyzer` to every `@Test` method. `RetryAnalyzer` re-runs a failed test up to 2 times before letting the failure stand. Both suites (`testng-smoke.xml`, `testng-regression.xml`) register the listener.
 
 ### Screenshot on failure
 
@@ -132,6 +132,18 @@ mvn test -Dheadless=true
 ```bash
 mvn allure:report
 open target/site/allure-maven-plugin/index.html
+```
+
+---
+
+## Checking for Dependency Upgrades
+
+```bash
+# List dependencies with newer versions available
+mvn versions:display-dependency-updates
+
+# List available plugin updates
+mvn versions:display-plugin-updates
 ```
 
 ---
