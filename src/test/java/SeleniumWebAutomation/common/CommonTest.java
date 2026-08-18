@@ -4,6 +4,7 @@ import SeleniumWebAutomation.config.BrowserFactory;
 import SeleniumWebAutomation.config.ConfigReader;
 import SeleniumWebAutomation.driver.DriverManager;
 import io.qameta.allure.Attachment;
+import org.openqa.selenium.BuildInfo;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.testng.ITestResult;
@@ -27,7 +28,7 @@ public abstract class CommonTest {
         env.setProperty("Target URL", ConfigReader.getBaseUrl());
         env.setProperty("Browser", ConfigReader.getBrowser());
         env.setProperty("Java Version", System.getProperty("java.version"));
-        env.setProperty("Selenium Version", "4.45.0");
+        env.setProperty("Selenium Version", new BuildInfo().getReleaseLabel());
 
         Path resultsDir = Paths.get("target/allure-results");
         Files.createDirectories(resultsDir);
