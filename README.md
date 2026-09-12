@@ -1,11 +1,11 @@
 # selenium-java
 
 ![Java](https://img.shields.io/badge/Java-25-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
-![Selenium](https://img.shields.io/badge/Selenium-4.47-43B02A?style=for-the-badge&logo=selenium&logoColor=white)
+![Selenium](https://img.shields.io/badge/Selenium-4.49-43B02A?style=for-the-badge&logo=selenium&logoColor=white)
 ![TestNG](https://img.shields.io/badge/TestNG-7.12-orange?style=for-the-badge)
-![Allure](https://img.shields.io/badge/Allure-2.35-orange?style=for-the-badge)
+![Allure](https://img.shields.io/badge/Allure-3.0-orange?style=for-the-badge)
 
-UI test automation for [OrangeHRM](https://opensource-demo.orangehrmlive.com) — an open-source enterprise HR application. Covers authentication, employee management, and leave management across smoke and regression suites with parallel execution.
+UI test automation for [OrangeHRM](https://opensource-demo.orangehrmlive.com) - an open-source enterprise HR application. Covers authentication, employee management, and leave management across smoke and regression suites with parallel execution.
 
 ---
 
@@ -14,10 +14,10 @@ UI test automation for [OrangeHRM](https://opensource-demo.orangehrmlive.com) �
 | Tool               | Version | Purpose                                                     |
 |--------------------|---------|-------------------------------------------------------------|
 | Java               | 25      | Language                                                    |
-| Selenium WebDriver | 4.47.0  | Browser automation                                          |
+| Selenium WebDriver | 4.49.0  | Browser automation                                          |
 | TestNG             | 7.12.0  | Test runner, parallel execution, DataProvider               |
 | WebDriverManager   | 6.3.4   | Automatic driver binary management                          |
-| Allure             | 2.35.4  | Reporting — steps, screenshots on failure, environment info |
+| Allure             | 3.0.0   | Reporting - steps, screenshots on failure, environment info |
 | Maven              | 3.9.16  | Build and dependency management                             |
 
 ---
@@ -35,7 +35,7 @@ src/test/java/SeleniumWebAutomation/
 │   ├── ConfigReader.java      # Reads config.properties
 │   └── BrowserFactory.java    # Creates Chrome or Firefox driver; auto-headless when CI=true
 ├── driver/
-│   └── DriverManager.java     # ThreadLocal<WebDriver> — parallel-safe, no inheritance required
+│   └── DriverManager.java     # ThreadLocal<WebDriver> - parallel-safe, no inheritance required
 ├── pages/
 │   ├── LoginPage.java         # Login form, error alert, field validation errors
 │   ├── DashboardPage.java     # Post-login landing page, module navigation
@@ -58,11 +58,11 @@ src/test/resources/
 
 ### DriverManager
 
-`ThreadLocal<WebDriver>` lives in a standalone static utility, not in a base class. Any layer — page, component, test — accesses the current thread's driver via `DriverManager.getDriver()`. This makes the driver lifecycle explicit and keeps it out of the inheritance chain.
+`ThreadLocal<WebDriver>` lives in a standalone static utility, not in a base class. Any layer - page, component, test - accesses the current thread's driver via `DriverManager.getDriver()`. This makes the driver lifecycle explicit and keeps it out of the inheritance chain.
 
 ### BasePage
 
-Page objects extend `BasePage`, which accepts `WebDriver` via constructor, initialises `PageFactory`, and exposes `waitForVisible` / `waitForClickable` backed by `WebDriverWait`. No test logic in pages — pages only interact with the UI and return the next page.
+Page objects extend `BasePage`, which accepts `WebDriver` via constructor, initialises `PageFactory`, and exposes `waitForVisible` / `waitForClickable` backed by `WebDriverWait`. No test logic in pages - pages only interact with the UI and return the next page.
 
 ### Fluent page interface
 
@@ -152,7 +152,7 @@ mvn versions:display-plugin-updates
 
 GitHub Actions runs smoke tests on every push. Regression runs on `main` only, after smoke passes.
 
-Headless mode activates automatically when the `CI` environment variable is `true` — set by default in all GitHub Actions runners.
+Headless mode activates automatically when the `CI` environment variable is `true` - set by default in all GitHub Actions runners.
 
 ---
 
