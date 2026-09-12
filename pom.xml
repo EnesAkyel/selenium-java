@@ -14,7 +14,7 @@
         <maven.compiler.source>25</maven.compiler.source>
         <maven.compiler.target>25</maven.compiler.target>
         <aspectj.version>1.9.25.1</aspectj.version>
-        <allure.version>2.35.5</allure.version>
+        <allure.version>3.0.0</allure.version>
         <allure.commandline.version>2.44.0</allure.commandline.version>
         <testng.suite>testng-smoke.xml</testng.suite>
     </properties>
@@ -85,7 +85,7 @@
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>4.48.0</version>
+            <version>4.49.0</version>
         </dependency>
         <dependency>
             <groupId>org.testng</groupId>

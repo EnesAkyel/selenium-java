@@ -1,9 +1,9 @@
 # selenium-java
 
 ![Java](https://img.shields.io/badge/Java-25-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
-![Selenium](https://img.shields.io/badge/Selenium-4.48-43B02A?style=for-the-badge&logo=selenium&logoColor=white)
+![Selenium](https://img.shields.io/badge/Selenium-4.49-43B02A?style=for-the-badge&logo=selenium&logoColor=white)
 ![TestNG](https://img.shields.io/badge/TestNG-7.12-orange?style=for-the-badge)
-![Allure](https://img.shields.io/badge/Allure-2.35-orange?style=for-the-badge)
+![Allure](https://img.shields.io/badge/Allure-3.0-orange?style=for-the-badge)
 
 UI test automation for [OrangeHRM](https://opensource-demo.orangehrmlive.com) - an open-source enterprise HR application. Covers authentication, employee management, and leave management across smoke and regression suites with parallel execution.
 
@@ -14,10 +14,10 @@ UI test automation for [OrangeHRM](https://opensource-demo.orangehrmlive.com) - 
 | Tool               | Version | Purpose                                                     |
 |--------------------|---------|-------------------------------------------------------------|
 | Java               | 25      | Language                                                    |
-| Selenium WebDriver | 4.48.0  | Browser automation                                          |
+| Selenium WebDriver | 4.49.0  | Browser automation                                          |
 | TestNG             | 7.12.0  | Test runner, parallel execution, DataProvider               |
 | WebDriverManager   | 6.3.4   | Automatic driver binary management                          |
-| Allure             | 2.35.5  | Reporting - steps, screenshots on failure, environment info |
+| Allure             | 3.0.0   | Reporting - steps, screenshots on failure, environment info |
 | Maven              | 3.9.16  | Build and dependency management                             |
 
 ---
