@@ -73,7 +73,7 @@
             <plugin>
                 <groupId>io.qameta.allure</groupId>
                 <artifactId>allure-maven</artifactId>
-                <version>3.0.3</version>
+                <version>3.1.0</version>
                 <configuration>
                     <reportVersion>${allure.commandline.version}</reportVersion>
                 </configuration>
@@ -85,7 +85,7 @@
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>4.49.0</version>
+            <version>4.50.0</version>
         </dependency>
         <dependency>
             <groupId>org.testng</groupId>
@@ -96,7 +96,7 @@
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
-            <version>6.3.4</version>
+            <version>6.4.0</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -120,7 +120,12 @@
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-core</artifactId>
-                <version>2.22.2</version>
+                <version>2.22.3</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>2.21.7</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.httpcomponents.client5</groupId>
